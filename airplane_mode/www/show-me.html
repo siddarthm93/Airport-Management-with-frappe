@@ -1,0 +1,14 @@
+{% set color = frappe.form_dict.color or "black" %}
+
+<!DOCTYPE html>
+<html>
+
+    <body>
+        <div class="rectangle" style="width: 300px;
+                height: 200px;
+                background-color: {{ color }}; ">
+        </div>
+
+    </body>
+
+</html>

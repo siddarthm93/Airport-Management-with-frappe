@@ -1,0 +1,274 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "allow_rename": 1,
+ "autoname": "format:SP-{code}-{###}",
+ "creation": "2025-04-29 14:04:53.722337",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "airport",
+  "shop_number",
+  "area_sqft",
+  "shop_code",
+  "column_break_sghm",
+  "monthly_rent",
+  "status",
+  "shop_type",
+  "is_occupied",
+  "section_break_xsxi",
+  "shops",
+  "tenant_details_section",
+  "name1",
+  "extra_charges",
+  "column_break_sifw",
+  "tenant",
+  "total_rent_amount",
+  "code",
+  "contract_details_section",
+  "lease_start_date",
+  "contract",
+  "column_break_yqzi",
+  "contract_expiry_date",
+  "amended_from",
+  "show_on_web_section",
+  "route",
+  "column_break_gfli",
+  "is_published"
+ ],
+ "fields": [
+  {
+   "fieldname": "shop_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Shop Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Shop Name",
+   "mandatory_depends_on": "eval:doc.is_occupied == 1"
+  },
+  {
+   "fieldname": "airport",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Airport",
+   "options": "Airport",
+   "read_only_depends_on": "eval:doc.shop_number !== undefined",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Tenant",
+   "mandatory_depends_on": "eval:doc.is_occupied == 1",
+   "options": "Tenant"
+  },
+  {
+   "default": "0",
+   "fieldname": "area_sqft",
+   "fieldtype": "Float",
+   "label": "Area (Sqft)"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_occupied",
+   "fieldtype": "Check",
+   "label": "Is Occupied"
+  },
+  {
+   "default": "0",
+   "fieldname": "monthly_rent",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Monthly Rent",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "contract_expiry_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Contract Expiry Date",
+   "mandatory_depends_on": "eval:doc.is_occupied == 1"
+  },
+  {
+   "fieldname": "contract",
+   "fieldtype": "Attach",
+   "label": "Contract"
+  },
+  {
+   "fieldname": "column_break_sghm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "airport.code",
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Code"
+  },
+  {
+   "fieldname": "lease_start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Lease Start Date",
+   "mandatory_depends_on": "eval:doc.is_occupied == 1"
+  },
+  {
+   "depends_on": "eval:doc.is_occupied == 1",
+   "fieldname": "contract_details_section",
+   "fieldtype": "Section Break",
+   "label": "Contract Details"
+  },
+  {
+   "fieldname": "column_break_yqzi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "In-Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nIn-Active\nExpired",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.is_occupied == 1",
+   "fieldname": "tenant_details_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant Details"
+  },
+  {
+   "fieldname": "extra_charges",
+   "fieldtype": "Currency",
+   "label": "Extra Charges"
+  },
+  {
+   "fieldname": "column_break_sifw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_rent_amount",
+   "fieldtype": "Currency",
+   "label": "Total Rent Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "shop_code",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Shop Code",
+   "read_only": 1,
+   "read_only_depends_on": "eval:doc.shop_number !== undefined"
+  },
+  {
+   "depends_on": "eval:doc.airport !== undefined",
+   "fieldname": "section_break_xsxi",
+   "fieldtype": "Section Break",
+   "label": "Shops"
+  },
+  {
+   "fieldname": "shops",
+   "fieldtype": "HTML",
+   "label": "Shops"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Airport Shop",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "shop_type",
+   "fieldtype": "Link",
+   "label": "Shop Type",
+   "options": "Shop Type"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "route"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "is published?"
+  },
+  {
+   "fieldname": "show_on_web_section",
+   "fieldtype": "Section Break",
+   "label": "Show on web"
+  },
+  {
+   "fieldname": "column_break_gfli",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "has_web_view": 1,
+ "index_web_pages_for_search": 1,
+ "is_published_field": "is_published",
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Rent Payment",
+   "link_fieldname": "airport_shop"
+  }
+ ],
+ "modified": "2025-05-27 14:59:22.404856",
+ "modified_by": "Administrator",
+ "module": "Airport Shop Management",
+ "name": "Airport Shop",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "route": "shops",
+ "row_format": "Dynamic",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "Green",
+   "title": "Active"
+  },
+  {
+   "color": "Red",
+   "title": "Expired"
+  },
+  {
+   "color": "Orange",
+   "title": "In-Active"
+  }
+ ],
+ "title_field": "shop_number",
+ "track_changes": 1
+}

@@ -1,0 +1,43 @@
+{
+ "add_total_row": 0,
+ "add_translate_data": 0,
+ "columns": [
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "label": "Add-On Type",
+   "options": "Airplane Ticket Add-on Item",
+   "width": 0
+  },
+  {
+   "fieldname": "count(item)",
+   "fieldtype": "Int",
+   "label": "Count",
+   "width": 0
+  }
+ ],
+ "creation": "2025-04-26 17:02:33.706405",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2025-04-26 18:02:41.766536",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Add-on Popularity",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "  SELECT\n        ata.item AS \"Add-On Type\",\n        COUNT(ata.item) as \"Count\"\n    FROM\n        `tabAirplane Ticket` AS at\n    JOIN\n        `tabAirplane Ticket Add-on Item` AS ata\n    ON\n        ata.parent = at.name\n    Group By\n        ata.item\n    ORDER BY\n        Count DESC;",
+ "ref_doctype": "Airplane Ticket",
+ "report_name": "Add-on Popularity",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "timeout": 0
+}

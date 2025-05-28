@@ -1,0 +1,16 @@
+<head>
+	<title>Shops</title>
+	<link rel="stylesheet" href="/assets/airplane_mode/css/picnic.css">
+</head>
+<div class="main">
+	<div class="card mb-2">
+		<div class="card-body">
+			<h5 class="card-title">{{ doc.airport or doc.name }}</h5>
+			<p class="card-text">
+				{{doc.shop_number}} | <span>{{doc.shop_type}}</span>
+			</p>
+			<a href="{{ doc.route }}" class="btn btn-primary">Go Shop</a>
+		</div>
+	</div>
+</div>
+<!-- this is a sample default list template -->

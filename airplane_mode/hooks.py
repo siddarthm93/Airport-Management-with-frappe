@@ -26,7 +26,11 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/airplane_mode/css/airplane_mode.css"
-# app_include_js = "/assets/airplane_mode/js/airplane_mode.js"
+app_include_js = [
+    # "/assets/airplane_mode/js/airplane_mode.js",
+                #   "/assets/airplane_mode/js/split_listview.js",
+                  "/assets/airplane_mode/js/airport_shop_list.js",
+				  ]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/airplane_mode/css/airplane_mode.css"
@@ -44,7 +48,7 @@ app_license = "mit"
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+# doctype_list_js = {"Airplane Flight": "public/js/airport_shop_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
@@ -52,6 +56,16 @@ app_license = "mit"
 # ------------------
 # include app icons in desk
 # app_include_icons = "airplane_mode/public/icons.svg"
+
+# Fixtures
+
+fixtures = [
+    "Workflow",
+    {
+        "dt": "Shop Type",
+        "filters": [["shop_type_name", "in", ["Stall", "Walk-through", "Normal"]]]
+    }
+]
 
 # Home Pages
 # ----------
@@ -148,23 +162,24 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"airplane_mode.tasks.all"
-# 	],
-# 	"daily": [
-# 		"airplane_mode.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"airplane_mode.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"airplane_mode.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"airplane_mode.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	# "all": [
+	# 	"airplane_mode.tasks.all"
+	# ],
+	# "daily": [
+	# 	 "airplane_mode.tasks.daily"
+	# ],
+	# "hourly": [
+	# 	"airplane_mode.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"airplane_mode.tasks.weekly"
+	# ],
+	"monthly": [
+        "airplane_mode.airport_shop_management.utils.payment_task.schedule_rent_payments",
+		"airplane_mode.airport_shop_management.utils.rent_reminder.send_rent_due_reminders",
+	],
+}
 
 # Testing
 # -------

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>{{ doc.name }}</title>
+        <link rel="stylesheet" href="/assets/airplane_mode/css/picnic.css">
+    </head>
+
+    <body>
+
+        <section class="card" style="max-width: 700px; margin: 2em auto;">
+            <header>
+                <h2>{{ doc.name }}</h2>
+            </header>
+            <section>
+                {% set parts = doc.name.split('-') %}
+                <p><strong>Airport:</strong> {{ doc.airport }}</p>
+                <p><strong>Area:</strong> {{ doc.area_sqft }} sq ft</p>
+                <p><strong>Type:</strong> {{ doc.shop_type }}</p>
+                <p><strong>Rent:</strong> {{ frappe.format(doc.monthly_rent, {'fieldtype': 'Currency'}) }}</p>
+            </section>
+            <footer style="text-align: right;">
+                <a class="button" href="shop-lead-form/">Book
+                    shop</a>
+            </footer>
+            <!-- href="shop-lead-form/edit?name={{doc.name}}&shop_number={{ doc.name
+                    }}&is_occupied=1&airport={{doc.airport}}&area_sqft={{doc.area_sqft}}&shop_type={{doc.shop_type}}&monthly_rent={{doc.monthly_rent}}&shop_code={{parts[2]}}">Book -->
+
+        </section>
+
+    </body>
+
+</html>
